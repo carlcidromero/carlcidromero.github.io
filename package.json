@@ -1,0 +1,20 @@
+{
+  "name": "carlcidromero.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlcidromero/carlcidromero.github.io.git"
+  },
+  "author": "cid",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/carlcidromero/carlcidromero.github.io/issues"
+  },
+  "homepage": "https://github.com/carlcidromero/carlcidromero.github.io#readme",
+  "devDependencies": {
+    "eslint": "8.57.0"
+  }
+}
