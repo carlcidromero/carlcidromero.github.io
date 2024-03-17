@@ -2,10 +2,6 @@ import { initializeCustomElementWithShadowRoot } from '../utils/initialize-custo
 import { createNavAnchor } from './custom-nav.utils.js';
 
 export class CustomNav extends HTMLElement {
-  constructor() {
-    super();
-  }
-
   connectedCallback() {
     const { shadowRoot } = initializeCustomElementWithShadowRoot({
       element: this,
@@ -18,11 +14,11 @@ export class CustomNav extends HTMLElement {
     });
     const audioEngineeringAnchor = createNavAnchor({
       textContent: 'Audio Engineering',
-      href: '/audio-engineering',
+      href: '/pages/audio-engineering',
     });
     const softwareEngineeringAnchor = createNavAnchor({
       textContent: 'Software Engineering',
-      href: '/software-engineering',
+      href: '/pages/software-engineering',
     });
     const navAnchors = [
       homeAnchor,
