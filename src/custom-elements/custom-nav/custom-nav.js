@@ -18,11 +18,11 @@ export class CustomNav extends HTMLElement {
     });
     const audioEngineeringAnchor = createNavAnchor({
       textContent: 'Audio Engineering',
-      href: '/audio-engineering',
+      href: '/pages/audio-engineering',
     });
     const softwareEngineeringAnchor = createNavAnchor({
       textContent: 'Software Engineering',
-      href: '/software-engineering',
+      href: '/pages/software-engineering',
     });
     const navAnchors = [
       homeAnchor,
