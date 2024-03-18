@@ -1,35 +1,34 @@
-import { initializeCustomElementWithShadowRoot } from '../utils/initialize-custom-element.js';
-import { createNavAnchor } from './custom-nav.utils.js';
+import { assertHtmlElements } from '../utils/assert-html-elements.js';
+import { attachOpenShadowRoot } from '../utils/attach-shadow-root.js';
+import { createChildren } from '../utils/create-children.js';
+import { wrapWithLi } from '../utils/wrap-with-li.js';
+import { customNavChildren } from './custom-nav.utils.js';
 
 export class CustomNav extends HTMLElement {
   connectedCallback() {
-    const { shadowRoot } = initializeCustomElementWithShadowRoot({
+    const shadowRoot = attachOpenShadowRoot({
       element: this,
     });
-    const nav = document.createElement('nav');
-    const ul = document.createElement('ul');
-    const homeAnchor = createNavAnchor({
-      href: '/',
-      textContent: 'Home',
+    const children = createChildren({
+      children: customNavChildren,
     });
-    const audioEngineeringAnchor = createNavAnchor({
-      textContent: 'Audio Engineering',
-      href: '/pages/audio-engineering',
-    });
-    const softwareEngineeringAnchor = createNavAnchor({
-      textContent: 'Software Engineering',
-      href: '/pages/software-engineering',
-    });
+
+    const {
+      nav,
+      ul,
+      homeAnchor,
+      audioEngineeringAnchor,
+      softwareEngineeringAnchor,
+    } = assertHtmlElements({ map: children });
+
     const navAnchors = [
       homeAnchor,
       audioEngineeringAnchor,
       softwareEngineeringAnchor,
     ];
-    const navLis = navAnchors.map((anchor) => {
-      const li = document.createElement('li');
-      li.appendChild(anchor);
-      return li;
-    });
+
+    const navLis = wrapWithLi({ target: navAnchors });
+
     navLis.forEach((li) => {
       ul.appendChild(li);
     });
