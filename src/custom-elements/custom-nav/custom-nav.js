@@ -1,5 +1,5 @@
 import { assertHtmlElements } from '../utils/assert-html-elements.js';
-import { attachOpenShadowRoot } from '../utils/attach-shadow-root.js';
+import { attachOpenShadowRoot } from '../utils/attach-open-shadow-root.js';
 import { createChildren } from '../utils/create-children.js';
 import { createNavAnchor } from './custom-nav.utils.js';
 
