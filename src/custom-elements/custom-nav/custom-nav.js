@@ -1,13 +1,22 @@
-import { initializeCustomElementWithShadowRoot } from '../utils/initialize-custom-element.js';
+import { assertHtmlElements } from '../utils/assert-html-elements.js';
+import { attachOpenShadowRoot } from '../utils/attach-shadow-root.js';
+import { createChildren } from '../utils/create-children.js';
 import { createNavAnchor } from './custom-nav.utils.js';
 
 export class CustomNav extends HTMLElement {
   connectedCallback() {
-    const { shadowRoot } = initializeCustomElementWithShadowRoot({
+    const shadowRoot = attachOpenShadowRoot({
       element: this,
     });
-    const nav = document.createElement('nav');
-    const ul = document.createElement('ul');
+    const children = createChildren({
+      children: [
+        { name: 'nav', tag: 'nav' },
+        { name: 'ul', tag: 'ul' },
+      ],
+    });
+    const { nav, ul } = assertHtmlElements({ map: children });
+    // const nav = document.createElement('nav');
+    // const ul = document.createElement('ul');
     const homeAnchor = createNavAnchor({
       href: '/',
       textContent: 'Home',
