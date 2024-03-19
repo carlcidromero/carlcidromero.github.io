@@ -1,13 +1,14 @@
-import { initializeCustomElementWithShadowRoot } from '../utils/initialize-custom-element.js';
+import { assertHtmlElements } from '../utils/assert-html-elements.js';
+import { createChildren } from '../utils/create-children.js';
+import { customHeaderChildren } from './custom-header.utils.js';
 
 export class CustomHeader extends HTMLElement {
   connectedCallback() {
-    const { shadowRoot } = initializeCustomElementWithShadowRoot({
-      element: this,
+    const shadowRoot = this.attachShadow({ mode: 'open' });
+    const children = createChildren({
+      children: customHeaderChildren,
     });
-    const header = document.createElement('header');
-    const h1 = document.createElement('h1');
-    h1.textContent = 'Carl (Cid) Romero';
+    const { header, h1 } = assertHtmlElements({ map: children });
 
     header.appendChild(h1);
     shadowRoot.appendChild(header);
