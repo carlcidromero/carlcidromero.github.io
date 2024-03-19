@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <script
+      src="../../../../index.js"
+      type="module"
+      defer
+    ></script>
+    <title>carlcidromero - software engineering - unary functions</title>
+  </head>
+  <body>
+    <custom-header></custom-header>
+    <custom-nav></custom-nav>
+    <main>
+      <article>
+        <h2>Write functions that take one argument</h2>
+        <p>Functions that take one argument:</p>
+        <ul>
+          <li>May also be referred to as unary or monadic functions.</li>
+          <li>Encourage focused, concise, and modular code.</li>
+        </ul>
+        <h3>Examples in JavaScript</h3>
+        <h4>A unary function that takes a primitive argument</h4>
+        <ul>
+          <li>
+            I rarely write these because their arity can too easily increase
+            while maintaining a codebase.
+          </li>
+        </ul>
+        <pre>
+          <code>
+  /**
+    * @param {string} value
+    */
+  const operateOnValue = (value) => {
+    const result = someOperation(value);
+    return result;
+  }
+          </code>
+        </pre>
+        <h4>A unary function that takes a non-primitive argument</h4>
+        <ul>
+          <li>I prefer to write these because they can easily remain unary.</li>
+          <li>
+            They are more developer-friendly than functions that require
+            multiple arguments passed in a specific order.
+          </li>
+        </ul>
+        <pre>
+          <code>
+  /**
+   * @param {{foo: string, bar: number, baz: boolean}} values
+   */
+  const operateOnValues = (values) => {
+    const { foo, bar, baz } = values;
+    const result = {};
+    result.foo = stringOperation(foo);
+    result.bar = numberOperation(bar);
+    result.baz = booleanOperation(baz);
+    return result;
+  }
+          </code>
+        </pre>
+      </article>
+    </main>
+  </body>
+</html>
