@@ -1,14 +1,11 @@
 import { assertHtmlElements } from '../utils/assert-html-elements.js';
-import { attachOpenShadowRoot } from '../utils/attach-shadow-root.js';
 import { createChildren } from '../utils/create-children.js';
 import { wrapWithLi } from '../utils/wrap-with-li.js';
 import { customNavChildren } from './custom-nav.utils.js';
 
 export class CustomNav extends HTMLElement {
   connectedCallback() {
-    const shadowRoot = attachOpenShadowRoot({
-      element: this,
-    });
+    const shadowRoot = this.attachShadow({ mode: 'open' });
     const children = createChildren({
       children: customNavChildren,
     });
