@@ -1,0 +1,6 @@
+html {
+  visibility: visible;
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 750ms;
+}
