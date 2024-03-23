@@ -5,11 +5,12 @@ import { customNavChildren } from './custom-nav.utils.js';
 
 export class CustomNav extends HTMLElement {
   connectedCallback() {
+    if (this.shadowRoot) return;
+
     const shadowRoot = this.attachShadow({ mode: 'open' });
     const children = createChildren({
       children: customNavChildren,
     });
-
     const {
       nav,
       ul,
@@ -17,13 +18,11 @@ export class CustomNav extends HTMLElement {
       audioEngineeringAnchor,
       softwareEngineeringAnchor,
     } = assertHtmlElements({ map: children });
-
     const navAnchors = [
       homeAnchor,
       audioEngineeringAnchor,
       softwareEngineeringAnchor,
     ];
-
     const navLis = wrapWithLi({ target: navAnchors });
 
     navLis.forEach((li) => {

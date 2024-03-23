@@ -4,6 +4,8 @@ import { customHeaderChildren } from './custom-header.utils.js';
 
 export class CustomHeader extends HTMLElement {
   connectedCallback() {
+    if (this.shadowRoot) return;
+
     const shadowRoot = this.attachShadow({ mode: 'open' });
     const children = createChildren({
       children: customHeaderChildren,

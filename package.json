@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "cypress run",
+    "test:open": "cypress open"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/carlcidromero/carlcidromero.github.io.git"
