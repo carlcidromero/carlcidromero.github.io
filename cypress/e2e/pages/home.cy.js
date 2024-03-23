@@ -1,4 +1,4 @@
-import { headerTextContent } from '../../../src/custom-elements/custom-header/custom-header.utils';
+import { getHeaderTextContent } from '../../../src/custom-elements/custom-header/custom-header.utils';
 
 describe('Home page', () => {
   beforeEach(() => {
@@ -10,6 +10,6 @@ describe('Home page', () => {
       .should('exist')
       .shadow()
       .find('h1')
-      .should('contain.text', headerTextContent);
+      .should('contain.text', getHeaderTextContent());
   });
 });
