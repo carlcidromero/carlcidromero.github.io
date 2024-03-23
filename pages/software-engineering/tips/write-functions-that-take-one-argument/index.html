@@ -6,6 +6,10 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+    <link
+      rel="stylesheet"
+      href="../../../../fouc-hide.css"
+    />
     <script
       src="../../../../index.js"
       type="module"
@@ -29,22 +33,16 @@
         <h4>A unary function that takes a primitive argument</h4>
         <ul>
           <li>
-            I rarely write these because their arity can too easily increase in
-            a team-maintained codebase unless the team regularly engages in
-            currying and partial application.
+            I prefer these but rarely write these because their arity can too
+            easily increase in a team-maintained codebase unless the team
+            collectively engages in currying and partial application.
           </li>
         </ul>
-        <pre>
-          <code>
+        <pre><code>
   /**
     * @param {string} value
     */
-  const operateOnValue = (value) => {
-    const result = someOperation(value);
-    return result;
-  }
-          </code>
-        </pre>
+  const operateOnValue = (value) => secondOperation(firstOperation(value)); </code></pre>
         <h4>A unary function that takes a non-primitive argument</h4>
         <ul>
           <li>
@@ -56,8 +54,7 @@
             multiple arguments passed in a specific order.
           </li>
         </ul>
-        <pre>
-          <code>
+        <pre><code>
   /**
    * @param {{foo: string, bar: number, baz: boolean}} values
    */
@@ -68,10 +65,12 @@
     result.bar = numberOperation(bar);
     result.baz = booleanOperation(baz);
     return result;
-  }
-          </code>
-        </pre>
+  }</code></pre>
       </article>
     </main>
   </body>
+  <link
+    rel="stylesheet"
+    href="../../../../fouc-show.css"
+  />
 </html>

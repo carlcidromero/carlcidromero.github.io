@@ -1,19 +1,18 @@
 import {
-  createH1WithTextContent,
+  createH1,
   createHeader,
   getOpenShadowRoot,
   hasShadowRoot,
-} from '../utils/utils.js';
+  setTextContent,
+} from '../../utils/utils.js';
 import { getHeaderTextContent } from './custom-header.utils.js';
 
 export class CustomHeader extends HTMLElement {
   connectedCallback() {
     if (hasShadowRoot(this)) return;
 
-    getOpenShadowRoot(this).appendChild(
-      createHeader().appendChild(
-        createH1WithTextContent(getHeaderTextContent())
-      )
-    );
+    getOpenShadowRoot(this)
+      .appendChild(createHeader())
+      .appendChild(setTextContent(createH1())(getHeaderTextContent()));
   }
 }
