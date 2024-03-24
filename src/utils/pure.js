@@ -1,3 +1,7 @@
+export const getClassBodyContainer = () => 'body-container';
+export const getClassFlexContainerColumn = () => 'flex-container--column';
+export const getClassFlexItem = () => 'flex-item';
+
 /**
  * @param {HTMLElement} element
  */
@@ -8,29 +12,6 @@ export const hasShadowRoot = (element) => !!element.shadowRoot;
  */
 export const getOpenShadowRoot = (element) =>
   element.attachShadow({ mode: 'open' });
-
-/**
- * @param {string} tag
- */
-const createElement = (tag) => document.createElement(tag);
-/**
- * @returns {HTMLAnchorElement}
- */
-export const createA = () => createElement('a');
-/**
- * @returns {HTMLHeadingElement}
- */
-export const createH1 = () => createElement('h1');
-export const createHeader = () => createElement('header');
-export const createNav = () => createElement('nav');
-/**
- * @returns {HTMLUListElement}
- */
-export const createUl = () => createElement('ul');
-/**
- * @returns {HTMLLIElement}
- */
-export const createLi = () => createElement('li');
 
 /**
  * @param {string} property
@@ -50,6 +31,7 @@ const setProperty =
   };
 export const setTextContent = setProperty('textContent');
 export const setHref = setProperty('href');
+export const setRel = setProperty('rel');
 
 /**
  * @param {HTMLElement} parent
@@ -64,7 +46,7 @@ export const appendChildren =
      * @param {number} index
      */
     const appendChild = (index = 0) => {
-      if (children.length < 0 || index === children.length) return;
+      if (index === children.length) return;
       parent.appendChild(children[index]);
       index++;
       appendChild(index);
@@ -72,3 +54,21 @@ export const appendChildren =
     appendChild();
     return parent;
   };
+
+/**
+ * @param {string} className
+ */
+const addClassName =
+  (className) =>
+  /**
+   * @param {HTMLElement} element
+   */
+  (element) => {
+    element.classList.add(className);
+    return element;
+  };
+export const addClassBodyContainer = addClassName(getClassBodyContainer());
+export const addClassFlexContainerColumn = addClassName(
+  getClassFlexContainerColumn()
+);
+export const addClassFlexItem = addClassName(getClassFlexItem());
