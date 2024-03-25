@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+pre {
+  background-color: lightgray;
+}
+
 .body-container {
   max-width: 90ch;
   min-width: 90ch;
