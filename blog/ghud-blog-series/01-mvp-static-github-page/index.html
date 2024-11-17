@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link rel="stylesheet" href="../../../index.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "01: MVP Static GitHub Page",
+        "datePublished": "2024-11-08",
+        "author": {
+          "@type": "Person",
+          "name": "Carl (Cid) Romero"
+        },
+        "keywords": "blog, code, coding, ghud, github, github pages, html, javascript, css, website, web development, web dev, frontend engineering",
+        "description": "This post details the technology used to create a simple static website using the free GitHub Pages service.",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://carlcidromero.github.io/blog/ghud-blog-series/01-mvp-static-github-page"
+        },
+        "genre": ["Educational, "Technical Insight"],
+        "about": ["GitHub Pages", "Static Websites", "Software Engineering", "Web Development", "Frontend Engineering"]
+      }
+    </script>
+    <title>01: MVP Static GitHub Page</title>
+  </head>
+  <body>
+    <header>
+      <h1>Carl (Cid) Romero</h1>
+      <nav aria-label="site navigation">
+        <ul>
+          <li><a href="../../../../">Home</a></li>
+          <li><a href="../../">Blog</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <h2>01: MVP Static GitHub Page</h2>
+        <aside><time datetime="2024-11-08">November 8, 2024</time></aside>
+        <p>
+          This blog starts out very basic. You can do the same if you have
+          internet access by creating a GitHub account, creating a repository,
+          setting it up as a GitHub Page, and creating a homepage with an HTML
+          file.
+        </p>
+        <p>
+          In this post, I will summarize the technologies involved in this
+          current version of the blog, the design decisions I made, a little bit
+          about interesting parts of its implementation, and what enhancements
+          will be made next.
+        </p>
+        <h3>Tech Stack</h3>
+        <ul>
+          <li><b>CSS</b>: Styling website layout and elements.</li>
+          <li><b>GitHub</b>: Code version control and website hosting.</li>
+          <li><b>HTML</b>: Website structure and content.</li>
+          <li>
+            <b>JSON-LD</b>: Enriching search engine result pages and search
+            engine optimization.
+          </li>
+        </ul>
+        <h3>Design</h3>
+        <p>
+          The design is very minimal &mdash; HTML is responsive out-of-the-box,
+          so I add as little CSS as possible to keep it that way. I am literally
+          doing just enough to share text, so for now, the only changes to the
+          document layout are related to readability.
+        </p>
+        <h3>Implementation</h3>
+        <p>
+          Key points of this website's implementation are in the subheadings
+          below. For those that want the full picture, feel free to check out
+          the
+          <a
+            href="https://www.github.com/carlcidromero/carlcidromero.github.io"
+            target="_blank"
+            referrerpolicy="no-referrer"
+            >MVP source code</a
+          >.
+        </p>
+        <h4>CSS On This Site</h4>
+        <p>
+          The entire page is a flex box to simplify layout adjustments. I opted
+          to take a mobile-first approach, too, so I am keeping the content at
+          <code>max-width: 500px</code>.
+        </p>
+        <h4>JSON-LD On This Page</h4>
+        <pre
+          class="code-snippet"
+        ><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "headline": "01: MVP Static GitHub Page",
+  "datePublished": "2024-11-08",
+  "author": {
+    "@type": "Person",
+    "name": "Carl (Cid) Romero"
+  },
+  "keywords": "blog, code, coding, ghud, github, github pages, html, javascript, css, website, web development, web dev, frontend engineering",
+  "description": "This post details the technology used to create a simple static website using the free GitHub Pages service.",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://carlcidromero.github.io/blog/ghud-blog-series/01-mvp-static-github-page"
+  },
+  "genre": ["Educational, "Technical Insight"],
+  "about": ["GitHub Pages", "Static Websites", "Software Engineering", "Web Development", "Frontend Engineering"]
+}
+&lt;/script&gt;</code></pre>
+        <h4>What's Next?</h4>
+        <p>
+          There are a few enhancements I would like to make &mdash; web
+          components for redundant HTML elements on this site (like the navbar),
+          syntax highlighting for the code snippets, a dark mode toggle... the
+          list could go on. I plan on adding these enhancements eventually, but
+          I will only focus on just one for now. That will be the most useful
+          and meaningful enhancement that comes to mind, which is to add
+          JavaScript and use GitHub Gist as a content management system. With
+          this in place, I can write blog posts in Markdown from my phone
+          instead of writing them in HTML. As a result, this site should become
+          easier to maintain, since the content will be dynamically rendered on
+          each page, and should be a nice example of consuming a REST API for
+          readers.
+        </p>
+        <p>
+          If you would like to suggest an enhancement for or report a bug on
+          this site, feel free to
+          <a
+            href="https://github.com/carlcidromero/carlcidromero.github.io/issues/new/choose"
+            target="_blank"
+            referrerpolicy="no-referrer"
+            >create an issue</a
+          >. You will need a GitHub account to do so, and if you are an aspiring
+          or new software engineer, this is a good process to become familiar
+          with!
+        </p>
+      </article>
+    </main>
+  </body>
+</html>
