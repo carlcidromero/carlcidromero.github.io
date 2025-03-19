@@ -23,6 +23,7 @@ Starting my [digital garden](https://maggieappleton.com/garden-history).
     - GitHub page
         - Editorial-style resume home page
         - Vanilla JS?
+        - Setup GitHub Actions pipeline.
     - Professional story
         - The dangers of poor version control branch management
         - My two-week React crash course for a team of backend devs
