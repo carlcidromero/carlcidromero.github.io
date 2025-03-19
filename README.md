@@ -7,6 +7,7 @@ Starting my [digital garden](https://maggieappleton.com/garden-history).
 - Ghud plugin for task management apps.
 - Shape-up.
 - The Goal.
+- Imagination Library registration. 
 - Elegant Objects.
 - Custom ESLint OOP rules.
 - Ghud Game
