@@ -31,3 +31,4 @@ Starting my [digital garden](https://maggieappleton.com/garden-history).
         - Audio-to-software engineer
         - Nonprofit digital transformation
         - Making music for video games
+        - Minimizing defects with more dev, not more Jira. 
