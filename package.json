@@ -1,5 +1,11 @@
 {
+  "scripts": {
+    "dev": "npx serve .",
+    "check": "npx prettier -c .",
+    "format": "npx prettier -w ."
+  },
   "devDependencies": {
-    "vite": "^6.3.5"
+    "prettier": "^3.6.2",
+    "serve": "^14.2.4"
   }
 }
