@@ -1,6 +1,6 @@
 Starting my [digital garden](https://maggieappleton.com/garden-history).
 
-## TODO
+## The Fridge (save for later)
 
 - https://cascadiajs.com/2025/
 - Phoenix Project.
