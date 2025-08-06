@@ -1,0 +1,17 @@
+article {
+  max-width: 85ch;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+html {
+  font-family: system-ui, sans-serif;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+}
