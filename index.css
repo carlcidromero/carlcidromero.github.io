@@ -4,7 +4,8 @@ article {
 
 body {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 html {
@@ -14,4 +15,24 @@ html {
 ul {
   display: flex;
   flex-direction: column;
+}
+
+.hero-cta {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .hero-cta {
+    flex-direction: column;
+  }
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  list-style: none;
 }
