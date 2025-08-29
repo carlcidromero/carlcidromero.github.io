@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../../../../index.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sliding Window Patterns: Code Smarter, Not Harder</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://bsky.app/profile/carlcidromero.bsky.social"
+              class="nav-link"
+              target="_blank"
+              rel="noopener"
+              referrerpolicy="no-referrer"
+              >Bluesky</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://github.com/carlcidromero"
+              class="nav-link"
+              target="_blank"
+              rel="noopener"
+              referrerpolicy="no-referrer"
+              >GitHub
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://linkedin.com/in/carlcidromero"
+              class="nav-link"
+              target="_blank"
+              rel="noopener"
+              referrerpolicy="no-referrer"
+              >LinkedIn
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <article>
+      <h1>Cracking Problems With Sliding Windows</h1>
+      <p>
+        Memorizing coding problems is brittle. Understanding patterns makes you
+        adaptable. The <strong>sliding window</strong> is one such pattern.
+      </p>
+
+      <h2>What It Is</h2>
+      <p>
+        A sliding window processes a sequence incrementally instead of
+        recomputing each time:
+      </p>
+      <ul>
+        <li><strong>Fixed window</strong> — constant size</li>
+        <li>
+          <strong>Dynamic window</strong> — grows or shrinks based on conditions
+        </li>
+      </ul>
+      <p>It turns many O(n²) solutions into O(n).</p>
+
+      <h2>Why Patterns &gt; Memorization</h2>
+      <p>
+        Memorized solutions break if the problem changes. Understanding patterns
+        lets you:
+      </p>
+      <ul>
+        <li>Adapt to variations</li>
+        <li>Write clean, maintainable code</li>
+        <li>Spot similar problems quickly</li>
+      </ul>
+
+      <h2>Example: Max Sum Subarray of Size k</h2>
+      <h3>Brute Force:</h3>
+      <pre><code>def max_sum_brute(arr, k):
+    return max(sum(arr[i:i+k]) for i in range(len(arr)-k+1))</code></pre>
+      <p>O(n*k)</p>
+
+      <h3>Sliding Window:</h3>
+      <pre><code>def max_sum_window(arr, k):
+    window = sum(arr[:k])
+    max_sum = window
+    for i in range(k, len(arr)):
+        window += arr[i] - arr[i-k]
+        max_sum = max(max_sum, window)
+    return max_sum</code></pre>
+      <p>O(n) — reuse info instead of recomputing.</p>
+
+      <h2>Spotting Sliding Window Problems</h2>
+      <ul>
+        <li>Contiguous subarrays/strings</li>
+        <li>Max/min/sum/count queries</li>
+        <li>Repeated computations over ranges</li>
+      </ul>
+
+      <h2>Tips</h2>
+      <ul>
+        <li>Understand the concept first.</li>
+        <li>Visualize the window.</li>
+        <li>Practice fixed vs dynamic windows.</li>
+        <li>Explain it aloud to reinforce understanding.</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>
+        Sliding window = flexible tool, not a trick. Focus on patterns, not
+        memorization. Memorize less. Understand more.
+      </p>
+    </article>
+  </body>
+</html>
