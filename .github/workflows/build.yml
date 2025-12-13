@@ -1,0 +1,35 @@
+name: Build site
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout site repo
+        uses: actions/checkout@v4
+
+      - name: Fetch shared content (raw GitHub)
+        run: |
+          mkdir -p content
+          curl -L \
+            https://raw.githubusercontent.com/carlcidromero/content/refs/heads/main/README.md \
+            -o content/README.md
+
+      - name: Inspect fetched content (debug)
+        run: |
+          echo "Fetched content:"
+          cat content/README.md
+
+      - name: Build HTML
+        run: |
+          node ./scripts/build.js
+
+      - name: Upload artifact (for Pages)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
