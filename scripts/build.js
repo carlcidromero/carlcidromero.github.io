@@ -1,7 +1,7 @@
 import fs from "fs";
 import { marked } from "marked";
 
-const markdown = fs.readFileSync("markdown/README.md", "utf8");
+const markdown = fs.readFileSync("content/README.md", "utf8");
 const parsed = marked.parse(markdown);
 
 const html = `<!doctype html>
