@@ -1,15 +1,18 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "npx serve .",
+    "dev": "npx serve docs",
     "check": "npx prettier -c .",
-    "format": "npx prettier -w ."
+    "format": "npx prettier -w .",
+    "build:prod": "npm run format && npm run check && node scripts/build/prod.js",
+    "build:test": "npm run format && npm run check && node scripts/build/test.js"
   },
   "devDependencies": {
-    "prettier": "^3.6.2",
-    "serve": "^14.2.4"
+    "prettier": "^3.7.4",
+    "serve": "^14.2.5"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "marked": "^17.0.1"
   }
 }
