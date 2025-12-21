@@ -25,6 +25,18 @@ jobs:
           echo "Fetched content:"
           cat content/pages/home/about-me.md
 
+      - name: Fetch shared CSS
+        run: |
+          mkdir -p ui/styles
+          curl -L \
+          https://raw.githubusercontent.com/carlcidromero/ui/refs/heads/main/build/output.css \
+            -o ui/styles/output.css
+
+      - name: Inspect fetched css
+        run: |
+          echo "Fetched css:"
+          cat ui/styles/output.css
+
       - name: Setup NodeJS
         uses: actions/setup-node@v4
         with:
