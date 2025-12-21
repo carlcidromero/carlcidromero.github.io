@@ -4,7 +4,7 @@ const ABOUT_ME_SELECTOR = "[data-src='about-me.md']";
 const article = document.querySelector(ABOUT_ME_SELECTOR);
 
 const data = await fetch(
-  "https://raw.githubusercontent.com/carlcidromero/content/refs/heads/main/pages/home/about-me.md"
+  "https://raw.githubusercontent.com/carlcidromero/content/refs/heads/main/pages/home/about-me.md",
 );
 const text = await data.text();
 const parsed = await marked.parse(text);

@@ -3,8 +3,9 @@
   "scripts": {
     "dev": "npx serve docs",
     "check": "npx prettier -c .",
+    "clean": "rm -rf docs",
     "format": "npx prettier -w .",
-    "build:prod": "npm run format && npm run check && node scripts/build/prod.js",
+    "build:prod": "npm run clean && npm run format && npm run check && node scripts/build/prod.js",
     "build:test": "npm run format && npm run check && node scripts/build/test.js"
   },
   "devDependencies": {
