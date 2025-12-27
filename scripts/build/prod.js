@@ -1,32 +1,63 @@
 import fs from "fs";
 import { marked } from "marked";
 
+const ENCODING = "utf8";
+
 const OUTPUT_DIRECTORY = "docs";
 const OUTPUT_FILE = "index.html";
 const OUTPUT_PATH = `${OUTPUT_DIRECTORY}/${OUTPUT_FILE}`;
-const ENCODING = "utf8";
+
+const BOOKS_DIRECTORY = "books";
+const AHERO_DIRECTORY = "ahero";
+const AHERO_PATH = `${OUTPUT_DIRECTORY}/${BOOKS_DIRECTORY}/${AHERO_DIRECTORY}`;
+
 const ABOUT_ME_REMOTE =
-  "https://raw.githubusercontent.com/carlcidromero/content/refs/heads/develop/pages/home/about-me.md";
+  "https://raw.githubusercontent.com/carlcidromero/content/refs/heads/main/pages/home/about-me.md";
 const CSS_REMOTE =
-  "https://raw.githubusercontent.com/carlcidromero/ui/refs/heads/develop/styles/main.css";
+  "https://raw.githubusercontent.com/carlcidromero/ui/refs/heads/main/styles/main.css";
+const BOOKS_REMOTE =
+  "https://raw.githubusercontent.com/carlcidromero/content/refs/heads/main/books";
+const AHERO_REMOTE = `${BOOKS_REMOTE}/ahero`;
+
+const AHERO_REALITY_REMOTE = `${AHERO_REMOTE}/reality.md`;
+
 const CSS_OUTPUT_FILE = "index.css";
-const TEMPLATE_PATH = "templates/index.html";
+
+const ABOUT_ME_TEMPLATE_PATH = "templates/index.html";
+const AHERO_REALITY_TEMPLATE_PATH = "templates/books/ahero/reality/index.html";
 
 (async () => {
-  const markdownResponse = await fetch(ABOUT_ME_REMOTE);
-  const markdown = await markdownResponse.text();
+  const aboutMeResponse = await fetch(ABOUT_ME_REMOTE);
+  const aboutMeMarkdown = await aboutMeResponse.text();
   const cssResponse = await fetch(CSS_REMOTE);
   const css = await cssResponse.text();
-  const template = fs.readFileSync(TEMPLATE_PATH, ENCODING);
-  const parsed = marked.parse(markdown);
+  const aboutMeTemplate = fs.readFileSync(ABOUT_ME_TEMPLATE_PATH, ENCODING);
+  const aboutMeParsed = marked.parse(aboutMeMarkdown);
 
-  const injectedHTML = template.replace(
+  const aboutMeHtml = aboutMeTemplate.replace(
     /<article data-src="about-me.md"><\/article>/,
-    `<article data-src="about-me.md">${parsed}</article>`,
+    `<article data-src="about-me.md">${aboutMeParsed}</article>`,
   );
 
   fs.mkdirSync(OUTPUT_DIRECTORY, { recursive: true });
 
   fs.writeFileSync(`${OUTPUT_DIRECTORY}/${CSS_OUTPUT_FILE}`, css);
-  fs.writeFileSync(OUTPUT_PATH, injectedHTML);
+  fs.writeFileSync(OUTPUT_PATH, aboutMeHtml);
+
+  const aheroRealityResponse = await fetch(AHERO_REALITY_REMOTE);
+  const aheroRealityMarkdown = await aheroRealityResponse.text();
+  const aheroRealityTemplate = fs.readFileSync(
+    AHERO_REALITY_TEMPLATE_PATH,
+    ENCODING,
+  );
+  const aheroRealityParsed = marked.parse(aheroRealityMarkdown);
+
+  const aheroRealityHtml = aheroRealityTemplate.replace(
+    /<article data-src="books\/ahero\/reality.md"><\/article>/,
+    `<article data-src="books\/ahero\/reality.md">${aheroRealityParsed}<\/article>`,
+  );
+
+  fs.mkdirSync(`${AHERO_PATH}/reality`, { recursive: true });
+
+  fs.writeFileSync(`${AHERO_PATH}/reality/index.html`, aheroRealityHtml);
 })();
