@@ -60,4 +60,10 @@ const AHERO_REALITY_TEMPLATE_PATH = "templates/books/ahero/reality/index.html";
   fs.mkdirSync(`${AHERO_PATH}/reality`, { recursive: true });
 
   fs.writeFileSync(`${AHERO_PATH}/reality/index.html`, aheroRealityHtml);
+
+  writeCnameFile();
 })();
+
+function writeCnameFile() {
+  fs.writeFileSync(`${OUTPUT_DIRECTORY}/CNAME`, "carlcidromero.com");
+}
