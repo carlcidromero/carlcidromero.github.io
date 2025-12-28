@@ -1,54 +1,42 @@
-name: Build site
+name: Build and Commit Output
 
 on:
-  push:
-    branches:
-      - develop
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout site repo
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Fetch shared content (raw GitHub)
-        run: |
-          mkdir -p content/pages/home
-          curl -L \
-          https://raw.githubusercontent.com/carlcidromero/content/refs/heads/main/pages/home/about-me.md \
-            -o content/pages/home/about-me.md
-
-      - name: Inspect fetched content (debug)
-        run: |
-          echo "Fetched content:"
-          cat content/pages/home/about-me.md
-
-      - name: Fetch shared CSS
-        run: |
-          mkdir -p ui/styles
-          curl -L \
-          https://raw.githubusercontent.com/carlcidromero/ui/refs/heads/main/build/output.css \
-            -o ui/styles/output.css
-
-      - name: Inspect fetched css
-        run: |
-          echo "Fetched css:"
-          cat ui/styles/output.css
-
-      - name: Setup NodeJS
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: 20
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build HTML
-        run: node ./scripts/build/prod.js
+      - name: Run build
+        run: npm run build:prod
 
-      - name: Upload artifact (for Pages)
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git status --porcelain | grep .; then
+            git add .
+            git commit -m "chore: build output"
+            git push
+          else
+            echo "No changes to commit"
+          fi
