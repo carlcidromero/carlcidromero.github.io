@@ -34,7 +34,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           if git status --porcelain | grep .; then
-            git add .
+            git add docs
             git commit -m "chore: build output"
             git push
           else
