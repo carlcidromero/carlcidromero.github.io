@@ -1,37 +1,24 @@
-Starting my [digital garden](https://maggieappleton.com/garden-history).
+# Bare Metal Web
 
-Powered by Bare Metal Web, a stupidly simple approach to the web.
+Starting my digital garden.
 
-## The Fridge (save for later)
+Bare Metal Web is a stupidly simple approach to building websites:
+- Semantic HTML
+- Zero build step
+- Minimal JavaScript
+- Progressive enhancement
+- Accessibility by default
 
-- https://cascadiajs.com/2025/
-- Phoenix Project.
-- Ghud plugin for task management apps.
-- Shape-up.
-- The Goal.
-- Imagination Library registration.
-- Elegant Objects.
-- Custom ESLint OOP rules.
-- Ghud Game
-  - Great Eight
-  - Four To Floor
-- Ghud tips for aspiring and entry-level software engineers
-  - It's so much more than coding
-  - Reading is a skill -- use it or lose it!
-- Ghud Web Component Library
-  - Setup Storybook vs simple index.html for documentation
-- Ghud CLI Application
-  - TypeScript initializer
-- Personal website
-  - GitHub page
-    - Editorial-style resume home page
-    - Vanilla JS?
-    - Setup GitHub Actions pipeline.
-  - Professional story
-    - The dangers of poor version control branch management
-    - My two-week React crash course for a team of backend devs
-    - Books that changed my life
-    - Audio-to-software engineer
-    - Nonprofit digital transformation
-    - Making music for video games
-    - Minimizing defects with more dev, not more Jira.
+This site is powered entirely by BMW.
+
+If your frontend needs a framework to render content,
+you’re solving the wrong problem.
+
+## Principles
+- HTML is the product
+- JavaScript is optional
+- CSS does the heavy lifting
+- Complexity must justify itself
+
+## Status
+Actively developed. Opinionated by design.
