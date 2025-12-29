@@ -1,5 +1,7 @@
 Starting my [digital garden](https://maggieappleton.com/garden-history).
 
+Powered by Bare Metal Web, a stupidly simple approach to the web.
+
 ## The Fridge (save for later)
 
 - https://cascadiajs.com/2025/
