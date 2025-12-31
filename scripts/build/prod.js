@@ -17,7 +17,11 @@ const CSS_REMOTE =
   "https://raw.githubusercontent.com/carlcidromero/ui/refs/heads/main/styles/main.css";
 const BOOKS_REMOTE =
   "https://raw.githubusercontent.com/carlcidromero/content/refs/heads/main/books";
+const BLOGS_REMOTE =
+  "https://raw.githubusercontent.com/carlcidromero/content/refs/heads/main/blogs";
+
 const AHERO_REMOTE = `${BOOKS_REMOTE}/ahero`;
+const HELLO_WORLD_DISTRIBUTED_SYSTEM_REMOTE = `${BLOGS_REMOTE}/software-engineering`;
 
 const AHERO_REALITY_REMOTE = `${AHERO_REMOTE}/reality.md`;
 
@@ -63,6 +67,11 @@ const AHERO_REALITY_TEMPLATE_PATH = "templates/books/ahero/reality/index.html";
 
   writeCnameFile();
 })();
+
+async function markdown(remote) {
+  const response = await fetch(remote);
+  return await response.text();
+}
 
 function writeCnameFile() {
   fs.writeFileSync(`${OUTPUT_DIRECTORY}/CNAME`, "carlcidromero.com");
