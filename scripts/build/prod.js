@@ -37,42 +37,56 @@ const HELLO_WORLD_DISTRIBUTED_SYSTEM_TEMPLATE_PATH =
   "templates/blogs/software-engineering/hello-world-distributed-system/index.html";
 
 (async () => {
-  const aboutMeResponse = await fetch(ABOUT_ME_REMOTE);
-  const aboutMeMarkdown = await aboutMeResponse.text();
+  writeWebPage();
+  writeBookEntry();
+  writeSoftwareEngineeringBlogPost();
+  writeCss();
+  writeCnameFile();
+})();
+
+async function writeCss() {
   const cssResponse = await fetch(CSS_REMOTE);
   const css = await cssResponse.text();
+  fs.writeFileSync(`${OUTPUT_DIRECTORY}/${CSS_OUTPUT_FILE}`, css);
+}
+
+async function writeWebPage() {
+  const aboutMeResponse = await fetch(ABOUT_ME_REMOTE);
+  const aboutMeMarkdown = await aboutMeResponse.text();
   const aboutMeTemplate = fs.readFileSync(ABOUT_ME_TEMPLATE_PATH, ENCODING);
   const aboutMeParsed = marked.parse(aboutMeMarkdown);
 
   const aboutMeHtml = aboutMeTemplate.replace(
     /<article data-src="about-me.md"><\/article>/,
-    `<article data-src="about-me.md">${aboutMeParsed}</article>`,
+    `<article data-src="about-me.md">${aboutMeParsed}</article>`
   );
 
   fs.mkdirSync(OUTPUT_DIRECTORY, { recursive: true });
-
-  fs.writeFileSync(`${OUTPUT_DIRECTORY}/${CSS_OUTPUT_FILE}`, css);
   fs.writeFileSync(OUTPUT_PATH, aboutMeHtml);
+}
 
+async function writeBookEntry() {
   const aheroRealityResponse = await fetch(AHERO_REALITY_REMOTE);
   const aheroRealityMarkdown = await aheroRealityResponse.text();
   const aheroRealityTemplate = fs.readFileSync(
     AHERO_REALITY_TEMPLATE_PATH,
-    ENCODING,
+    ENCODING
   );
   const aheroRealityParsed = marked.parse(aheroRealityMarkdown);
 
   const aheroRealityHtml = aheroRealityTemplate.replace(
     /<article data-src="books\/ahero\/reality.md"><\/article>/,
-    `<article data-src="books\/ahero\/reality.md">${aheroRealityParsed}<\/article>`,
+    `<article data-src="books\/ahero\/reality.md">${aheroRealityParsed}<\/article>`
   );
 
   fs.mkdirSync(`${AHERO_PATH}/reality`, { recursive: true });
 
   fs.writeFileSync(`${AHERO_PATH}/reality/index.html`, aheroRealityHtml);
+}
 
+async function writeSoftwareEngineeringBlogPost() {
   const helloWorldDistributedSystemResponse = await fetch(
-    HELLO_WORLD_DISTRIBUTED_SYSTEM_REMOTE,
+    HELLO_WORLD_DISTRIBUTED_SYSTEM_REMOTE
   );
 
   console.log(helloWorldDistributedSystemResponse);
@@ -81,11 +95,11 @@ const HELLO_WORLD_DISTRIBUTED_SYSTEM_TEMPLATE_PATH =
     await helloWorldDistributedSystemResponse.text();
   const helloWorldDistributedSystemTemplate = fs.readFileSync(
     HELLO_WORLD_DISTRIBUTED_SYSTEM_TEMPLATE_PATH,
-    ENCODING,
+    ENCODING
   );
 
   const helloWorldDistributedSystemParsed = marked.parse(
-    helloWorldDistributedSystemMarkdown,
+    helloWorldDistributedSystemMarkdown
   );
 
   console.log(helloWorldDistributedSystemParsed);
@@ -93,7 +107,7 @@ const HELLO_WORLD_DISTRIBUTED_SYSTEM_TEMPLATE_PATH =
   const helloWorldDistributedSystemHtml =
     helloWorldDistributedSystemTemplate.replace(
       /<article data-src="blogs\/software-engineering\/hello-world-distributed-system.md"><\/article>/,
-      `<article data-src="blogs\/software-engineering\/hello-world-distributed-system.md">${helloWorldDistributedSystemParsed}<\/article>`,
+      `<article data-src="blogs\/software-engineering\/hello-world-distributed-system.md">${helloWorldDistributedSystemParsed}<\/article>`
     );
 
   console.log(helloWorldDistributedSystemHtml);
@@ -104,12 +118,11 @@ const HELLO_WORLD_DISTRIBUTED_SYSTEM_TEMPLATE_PATH =
 
   fs.writeFileSync(
     `${SOFTWARE_ENGINEERING_PATH}/hello-world-distributed-system/index.html`,
-    helloWorldDistributedSystemHtml,
+    helloWorldDistributedSystemHtml
   );
-
-  writeCnameFile();
-})();
+}
 
 function writeCnameFile() {
+  fs.mkdirSync(`${OUTPUT_DIRECTORY}`, { recursive: true });
   fs.writeFileSync(`${OUTPUT_DIRECTORY}/CNAME`, "carlcidromero.com");
 }
